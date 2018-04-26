@@ -62,18 +62,6 @@ def play_uncompressed_wave(wave_object):
 
 class SpeechToTextClient(WebSocketClient):
     def __init__(self):
-
-        # watson url language translation
-        ws_la_tr_url = "wss://stream.watsonplatform.net/language-translator/api/v1/recognize"
-
-        # username and password lang trans
-        username_lang_trans = "a8e08478-9a5e-4e18-83ae-309c3568def4"
-        password_lang_trans = "0MbN8XG60jOw"
-
-        authstring_lang_trans = "{0}:{1}".format(username_lang_trans, password_lang_trans)
-
-        base64string_lang_trans = base64.b64encode(authstring_lang_trans.encode('utf-8')).decode('utf-8')
-# ------------------------------------------------------------------------------------------------------things that work
         # watson url speech to text
         ws_url = "wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
 
@@ -126,7 +114,7 @@ class SpeechToTextClient(WebSocketClient):
                     Command_State = None
                     self.listening = True
 
-                if x[0]['alternatives'][0]['transcript'] == 'go ' and Command_State is 'Started':
+                if x[0]['alternatives'][0]['transcript'] == 'translate ' and Command_State is 'Started':
                     Command_State = 'Gather'
                     self.Gathered_String = ''
                     self.listening = True
