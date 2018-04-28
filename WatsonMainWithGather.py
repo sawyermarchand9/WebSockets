@@ -66,8 +66,8 @@ class SpeechToTextClient(WebSocketClient):
         ws_url = "wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
 
         # username and password
-        username = "22add531-1ace-4e1f-b2b4-f893757e14c0"
-        password = "1XCnT54cHt8a"
+        username = "{username}"
+        password = "{password}"
 
         # authorize string
         authstring = "{0}:{1}".format(username, password)
@@ -156,8 +156,7 @@ class SpeechToTextClient(WebSocketClient):
 
                         r = requests.get(
                             "https://gateway.watsonplatform.net/language-translator/api/v2/translate?model_id=en-fr&text={0}".format(
-                                gs),
-                            headers=headers, auth=("a8e08478-9a5e-4e18-83ae-309c3568def4", "0MbN8XG60jOw"))
+                                gs), headers=headers, auth=("{username}", "{username}"))
 
                         print(r.text)
 
@@ -166,8 +165,7 @@ class SpeechToTextClient(WebSocketClient):
 
                         response = requests.get(
                             'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?accept=audio/wav&text={0}'.format(
-                                gs),
-                            params=params, auth=('f8cb89c3-662a-4bb8-b6e5-5c6744ce5e3c', 'nIWcVACDkz6k'))
+                                gs), params=params, auth=('{username}', '{password}'))
 
                         print(response.content)
 
